@@ -6,6 +6,7 @@ services:
     build:
       context: ./src
       dockerfile: kasabot.dockerfile
+    restart: unless-stopped
     cap_drop:
       - ALL
     environment:
