@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Consumed by the Microsoft.Build.CentralPackageVersions MSBuild project SDK -->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <PackageReference Update="dotenv.net" Version="[2.1.0]" />
+    <PackageReference Update="SSH.NET" Version="[2016.1.0]" />
+    <PackageReference Update="Telegram.Bot" Version="[15.4.0]" />
+  </ItemGroup>
+</Project>

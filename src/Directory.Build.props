@@ -1,0 +1,33 @@
+<Project>
+  <PropertyGroup>
+    <RepoRoot>$([MSBuild]::NormalizeDirectory('$(MSBuildThisFileDirectory)', '..'))</RepoRoot>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Deterministic>true</Deterministic>
+    <!-- <Nullable>enable</Nullable> -->
+    <Features>strict</Features>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoStdLib>true</NoStdLib>
+    <IsPublishable>false</IsPublishable>
+  </PropertyGroup>
+  <!--
+      DebugType  
+  -->
+  <PropertyGroup>
+    <RIDSubFolder>$([MSBuild]::ValueOrDefault('$(RuntimeIdentifier)', '$(RuntimeIdentifiers)'))</RIDSubFolder>
+    <RIDSubFolder Condition=" '$(RIDSubFolder)' == '' ">default-rid</RIDSubFolder>
+    <ArtifactsPath>$([MSBuild]::NormalizeDirectory('$(RepoRoot)', 'artifacts'))</ArtifactsPath>
+    <BaseIntermediateOutputPath>$([MSBuild]::NormalizeDirectory('$(ArtifactsPath)', 'obj', '$(MSBuildProjectName)', '$(TargetFramework)', '$(RIDSubFolder)'))</BaseIntermediateOutputPath>
+    <BaseOutputPath>$([MSBuild]::NormalizeDirectory('$(ArtifactsPath)', 'bin', '$(TargetFramework)', '$(RIDSubFolder)'))</BaseOutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <PlatformName Condition=" '$(PlatformName)' == '' ">AnyCPU</PlatformName>
+    <PlatformConfig>$(PlatformName)$(Configuration)</PlatformConfig>
+
+    <IntermediateOutputPath>$([MSBuild]::NormalizeDirectory('$(BaseIntermediateOutputPath)', '$(PlatformConfig)'))</IntermediateOutputPath>
+    <OutputPath>$([MSBuild]::NormalizeDirectory('$(BaseOutputPath)', '$(PlatformConfig)'))</OutputPath>
+    <PublishDir>$([MSBuild]::NormalizeDirectory('$(ArtifactsPath)', 'publish', '$(TargetFramework)', '$(RIDSubFolder)', '$(PlatformConfig)'))</PublishDir>
+  </PropertyGroup>
+</Project>

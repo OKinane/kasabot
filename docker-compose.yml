@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  bot:
+    image: kasabot
+    build:
+      context: ./src
+      dockerfile: kasabot.dockerfile
+    cap_drop:
+      - ALL
+    environment:
+      BOT_ACCESS_TOKEN: ${BOT_ACCESS_TOKEN}
+      BOT_AUTHORIZED_USERS: ${BOT_AUTHORIZED_USERS}
+      BOT_ROUTER_HOSTNAME: ${BOT_ROUTER_HOSTNAME}
+      BOT_ROUTER_SSH_USERNAME: ${BOT_ROUTER_SSH_USERNAME}
+      BOT_ROUTER_SSH_PASSWORD: ${BOT_ROUTER_SSH_PASSWORD}

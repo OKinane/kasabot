@@ -1,0 +1,16 @@
+# Exclude all by default
+/**/*
+
+# Include build scripts/config from repo root
+!/*.props
+!/*.targets
+!/dirs.proj
+!/global.json
+!/[Nn]u[Gg]et.[Cc]onfig
+
+# Include projects' source without temp files and build artifacts
+!/KasaBot/
+/**/tests/
+/**/bin/
+/**/obj/
+/**/*.~*

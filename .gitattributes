@@ -1,0 +1,18 @@
+* text=auto
+
+*.cs text diff=csharp
+*.proj text
+*.csproj text
+*.props text
+*.targets text
+
+.gitignore text export-ignore
+.gitattributes text export-ignore
+*.md text
+
+*.yml text
+*.json text
+
+.env.template text
+.dockerignore text
+*.dockerfile text
